@@ -48,7 +48,7 @@ jobs:
 
       - name: Setup dependency caching for faster builds
         uses: actions/cache@v3
-        whith:
+        with:
           path: ~/.nuget/packages
           key: ${{runner.os}}-nuget-${{ hashfiles('**/packages.lock.json')}}
           restore-keys: |
