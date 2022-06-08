@@ -55,7 +55,7 @@ jobs:
             ${{runner.os}}-nugut-
       
       - name: Build with dotnet
-        run: dotnet build --configurations Release
+        run: dotnet build --configuration Release
 
       - name: Dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
