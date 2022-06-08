@@ -22,7 +22,7 @@ name: Build and deploy ASP.Net Core app to an Azure Web App
 env: 
   AZURE_WEBAPP_NAME: myfirstdotnetwebapp8june
   AZURE_WEBAPP_PACKAGE: '.'
-  DOTNET_VERSION: '6'
+  DOTNET_VERSION: '6.0.300'
 
 on:
   push:
