@@ -33,37 +33,38 @@ on:
 permissions:
   contents: "read"
 
+ 
 jobs:
   build: 
     runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v2
-      whith:
-        dotnet-version: ${{env.DOTNET_VERSION}}
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        whith:
+          dotnet-version: ${{env.DOTNET_VERSION}}
 
-    - name: Setup dependency caching for faster builds
-      uses: actions/cache@v3
-      whith:
-        path: ~/.nuget/packages
-        key: ${{runner.os}}-nuget-${{ hashfiles('**/packages.lock.json')}}
-        restore-keys: |
-          ${{runner.os}}-nugut-
-    
-    - name: Build with dotnet
-      run: dotnet build --configurations Release
+      - name: Setup dependency caching for faster builds
+        uses: actions/cache@v3
+        whith:
+          path: ~/.nuget/packages
+          key: ${{runner.os}}-nuget-${{ hashfiles('**/packages.lock.json')}}
+          restore-keys: |
+            ${{runner.os}}-nugut-
+      
+      - name: Build with dotnet
+        run: dotnet build --configurations Release
 
-    - name: Dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
-      with:
-        name: .net-app
-        path: ${{env.DOTNET_ROOT}}/myapp
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
 
 
   deploy:
