@@ -25,9 +25,9 @@ env:
   DOTNET_VERSION: '6.0.300'
 
 on:
-  push:
-    brances:
-      - "main"
+  # push:
+  #   brances:
+  #     - "main"
   workflow_dispatch:
 
 permissions:
