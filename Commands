@@ -2,6 +2,7 @@ https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
 
 
 dotnet build  --configuration release
+dotnet run
 dotnet publish -c Release -o public
 
 
